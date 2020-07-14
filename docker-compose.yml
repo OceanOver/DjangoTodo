@@ -1,0 +1,44 @@
+version: "3"
+services:
+    django:
+        restart: always
+        build:
+            context: .
+            dockerfile: ./docker/Dockerfile
+        volumes:
+            - .:/app
+        depends_on:
+            - mysql
+        environment:
+            TZ: Asia/Shanghai # 设置容器时区
+            PROJECT_ENV: prod
+        ports:
+            - 7009:7009
+        env_file:
+            - ./env/.prod.env
+        command: /start
+
+    mysql:
+        restart: always
+        image: mysql:5.7.26
+        container_name: mysql
+        command: --character-set-server=utf8mb4
+            --collation-server=utf8mb4_unicode_ci # 设置utf8字符集
+        environment:
+            TZ: Asia/Shanghai # 设置容器时区
+            MYSQL_ROOT_PASSWORD: oceanover
+        ports:
+            - 3306:3306
+        volumes:
+            - ./mysql/data:/var/lib/mysql # 映射数据库保存目录到宿主机，防止数据丢失
+
+    nginx:
+        restart: always
+        image: nginx
+        container_name: nginx
+        ports:
+            - 80:80
+        volumes:
+            - ./nginx/conf:/etc/nginx/conf.d
+            - ./nginx/www:/www
+            - ./django_todo/upload:/upload

@@ -1,0 +1,34 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+# code quality
+pylint = "*"
+pylint-django = "*"
+flake8 = "*"
+autopep8 = "*"
+# programming
+rope = "==0.14.0"
+ipython = "*"
+
+[packages]
+# django
+django = "*"
+werkzeug = "*"
+django-extensions = "*"
+django-environ = "*"
+django-cors-headers = "*"
+# drf
+djangorestframework = "*"
+djangorestframework-jwt = "*"
+# python
+coloredlogs = "*"
+pillow = "*"
+arrow = "*"
+mysqlclient = "*"
+pymysql = "*"
+
+[requires]
+python_version = "3.7"

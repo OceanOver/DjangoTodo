@@ -1,0 +1,28 @@
+version: "3"
+services:
+    mysql:
+        restart: always
+        image: mysql:5.7.26
+        container_name: mysql
+        command: 
+            --character-set-server=utf8mb4 
+            --collation-server=utf8mb4_unicode_ci # 设置utf8字符集
+        environment:
+            TZ: Asia/Shanghai # 设置容器时区
+            MYSQL_ROOT_PASSWORD: oceanover
+        ports:
+            - 3306:3306
+        volumes:
+            - ./mysql/data:/var/lib/mysql # 映射数据库保存目录到宿主机，防止数据丢失
+    
+    nginx:
+        restart: always
+        image: nginx
+        container_name: nginx
+        environment:
+            TZ: Asia/Shanghai # 设置容器时区
+        ports:
+            - 80:80
+        volumes:
+            - ./nginx/conf:/etc/nginx/conf.d
+            - ./nginx/www:/www
