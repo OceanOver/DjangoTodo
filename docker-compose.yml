@@ -6,7 +6,8 @@ services:
             context: .
             dockerfile: ./docker/Dockerfile
         volumes:
-            - ./django_todo/upload:/app/django_todo/upload
+            - /home/data/DjangoTodo/upload:/app/django_todo/upload
+            - /home/data/DjangoTodo/log:/app/log
         depends_on:
             - mysql
         environment:
