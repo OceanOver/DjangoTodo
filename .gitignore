@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 
 mysql
+Users/YT/GitHub/Todo/ReactTodo/fabfile.py
+django_todo/upload
+!django_todo/upload/demo.png

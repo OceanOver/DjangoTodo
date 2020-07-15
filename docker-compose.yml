@@ -6,7 +6,7 @@ services:
             context: .
             dockerfile: ./docker/Dockerfile
         volumes:
-            - .:/app
+            - ./django_todo/upload:/app/django_todo/upload
         depends_on:
             - mysql
         environment:
@@ -40,5 +40,4 @@ services:
             - 80:80
         volumes:
             - ./nginx/conf:/etc/nginx/conf.d
-            - ./nginx/www:/www
-            - ./django_todo/upload:/upload
+            - ./home/data/web:/web
