@@ -21,9 +21,16 @@ def init_db():
     conn = pymysql.connect(user=user, passwd=passwd, host=host, port=port)
     cursor = conn.cursor()
     try:
-        cursor.execute("create database if not exists %s default charset utf8mb4 collate utf8mb4_unicode_ci;" % (db))
-        # 提交执行
-        conn.commit()
+        cursor.execute("show databases;")
+        result = cursor.fetchall()
+        exist_db = False
+        rows = [row[0] for row in result]
+        if db in rows:
+            exist_db = True
+        if exist_db is False:
+            cursor.execute("create database if not exists %s default charset utf8mb4 collate utf8mb4_unicode_ci;" % (db))
+            # 提交执行
+            conn.commit()
     except Exception:
         pass
     finally:

@@ -4,5 +4,6 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
+cd /app/init.d && python initdb.py
 python manage.py migrate
 /usr/local/bin/gunicorn config.wsgi --bind 0.0.0.0:7009 --chdir=/app
