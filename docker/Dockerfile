@@ -22,6 +22,6 @@ COPY ./docker/start /start
 RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
 
-EXPOSE 7009
+RUN cd /app/init.d && python initdb.py
 
-ENTRYPOINT ["/entrypoint"]
+EXPOSE 7009
