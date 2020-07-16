@@ -38,6 +38,8 @@ services:
         restart: always
         image: nginx
         container_name: nginx
+        depends_on:
+            - django
         ports:
             - 80:80
         volumes:

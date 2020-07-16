@@ -18,8 +18,4 @@ COPY ./docker/start /start
 RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
 
-ENV PROJECT_ENV prod
-
-RUN cd /app/init.d && python initdb.py
-
 EXPOSE 7009
