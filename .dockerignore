@@ -9,4 +9,7 @@
 ./Pipfile.lock
 ./manage.py
 ./docker-compose.dev.yml
+./docker-compose.yml
+./.git
+./.gitignore
 ./nginx/www

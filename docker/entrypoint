@@ -5,4 +5,4 @@ set -o pipefail
 set -o nounset
 
 
-PROJECT_ENV=prod && cd /init.d && python initdb.py
+PROJECT_ENV=prod && cd /app/init.d && python initdb.py
