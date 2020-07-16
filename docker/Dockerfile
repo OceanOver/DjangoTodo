@@ -5,9 +5,9 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update \
     # dependencies for building Python packages
-    && apt-get install -y build-essential \
+    && apt-get install -y build-essential 
     # Translations dependencies
-    && apt-get install -y gettext
+    # && apt-get install -y gettext
 
 WORKDIR /app
 
