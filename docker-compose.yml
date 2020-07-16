@@ -31,7 +31,7 @@ services:
         ports:
             - 3306:3306
         volumes:
-            - ./mysql/data:/var/lib/mysql # 映射数据库保存目录到宿主机，防止数据丢失
+            - /home/data/mysql/data:/var/lib/mysql # 映射数据库保存目录到宿主机，防止数据丢失
 
     nginx:
         restart: always
