@@ -14,10 +14,6 @@ RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
 # copy code to container
 COPY . /app
 
-COPY ./docker/entrypoint /entrypoint
-RUN sed -i 's/\r$//g' /entrypoint
-RUN chmod +x /entrypoint
-
 COPY ./docker/start /start
 RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
