@@ -5,6 +5,7 @@ services:
         build:
             context: .
             dockerfile: ./docker/Dockerfile
+        container_name: django
         volumes:
             - /home/data/DjangoTodo/upload:/app/django_todo/upload
             - /home/data/DjangoTodo/log:/app/log
