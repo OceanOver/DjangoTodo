@@ -43,3 +43,5 @@ LOGGING = {
         },
     },
 }
+
+MEDIA_URL = '/'
