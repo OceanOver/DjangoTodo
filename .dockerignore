@@ -2,7 +2,6 @@
 .coveragerc
 .pylintrc
 ./log
-./init.d
 ./.vscode
 ./README.md
 ./LICENSE

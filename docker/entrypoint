@@ -5,37 +5,4 @@ set -o pipefail
 set -o nounset
 
 
-mysql_ready() {
-python << END
-import pymysql
-import os
-
-
-user = os.getenv('MYSQL_USER')
-passwd = os.getenv('MYSQL_PASSWORD')
-host = os.getenv('MYSQL_HOST')
-port = int(os.getenv.int('MYSQL_PORT'))
-db = os.getenv('MYSQL_DB')
-conn = pymysql.connect(user=user, passwd=passwd, host=host, port=port)
-cursor = conn.cursor()
-try:
-    cursor.execute("create database if not exists %s default charset utf8mb4 collate utf8mb4_unicode_ci;" % (db))
-    # 提交执行
-    conn.commit()
-except Exception:
-    pass
-finally:
-    # 不论try中的代码是否抛出异常，这里都会执行
-    # 关闭游标和数据库连接
-    cursor.close()
-    conn.close()
-
-END
-}
-until mysql_ready; do
-  >&2 echo 'Waiting for Mysql to become available...'
-  sleep 1
-done
->&2 echo 'Mysql is available'
-
-exec "$@"
+PROJECT_ENV=prod && cd /init.d && python initdb.py
