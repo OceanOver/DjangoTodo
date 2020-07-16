@@ -12,7 +12,7 @@ services:
         depends_on:
             - mysql
         networks: 
-            - django_todo
+            - network
         environment:
             TZ: Asia/Shanghai # 设置容器时区
             PROJECT_ENV: prod
@@ -32,7 +32,7 @@ services:
             TZ: Asia/Shanghai # 设置容器时区
             MYSQL_ROOT_PASSWORD: oceanover
         networks: 
-            - django_todo
+            - network
         ports:
             - 3306:3306
         volumes:
@@ -43,7 +43,7 @@ services:
         image: nginx
         container_name: nginx
         networks: 
-            - django_todo
+            - network
         depends_on:
             - django
         ports:
@@ -53,5 +53,5 @@ services:
             - /home/data/web:/web
 
 networks:
-    django_todo:
+    network:
         driver: bridge
