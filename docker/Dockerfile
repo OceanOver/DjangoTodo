@@ -1,13 +1,7 @@
 
-FROM python:3.8-slim-buster
+FROM python:3.7
 
 ENV PYTHONUNBUFFERED 1
-
-RUN apt-get update \
-    # dependencies for building Python packages
-    && apt-get install -y build-essential 
-    # Translations dependencies
-    # && apt-get install -y gettext
 
 WORKDIR /app
 
