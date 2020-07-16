@@ -41,4 +41,4 @@ services:
             - 80:80
         volumes:
             - ./nginx/conf:/etc/nginx/conf.d
-            - ./home/data/web:/web
+            - /home/data/web:/web
