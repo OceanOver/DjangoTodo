@@ -41,6 +41,6 @@ cd ./init.d
 python initdb.py
 python manage.py migrate
 
-# run server
+# run server & # visit site: http://127.0.0.1
 python manage.py runserver_plus 0.0.0.0:7009
 ```
