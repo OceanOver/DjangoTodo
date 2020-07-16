@@ -10,8 +10,8 @@ RUN pip install pip -U
 # install requirements
 COPY ./requirements.txt /app/requirements.txt
 # RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
-# RUN pip install -i https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt
-RUN pip install -r requirements.txt
+RUN pip install -i https://mirrors.aliyun.com/pypi/simple/ -r requirements.txt
+# RUN pip install -r requirements.txt
 
 # copy code to container
 COPY . /app
