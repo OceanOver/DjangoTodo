@@ -12,9 +12,16 @@ RUN apt-get update \
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && rm -rf /var/lib/apt/lists/*
 
-# Requirements are installed here to ensure they will be cached.
-COPY ./requirements.txt /requirements.txt
-RUN pip install -r requirements.txt && rm -rf /requirements.txt
+WORKDIR /app
+
+# update pip
+RUN pip install pip -U
+# install requirements
+COPY ./requirements.txt /app/requirements.txt
+RUN pip install -r requirements.txt
+
+# copy code to container
+COPY . /app
 
 COPY ./docker/entrypoint /entrypoint
 RUN sed -i 's/\r$//g' /entrypoint
@@ -23,8 +30,6 @@ RUN chmod +x /entrypoint
 COPY ./docker/start /start
 RUN sed -i 's/\r$//g' /start
 RUN chmod +x /start
-
-WORKDIR /app
 
 EXPOSE 7009
 
