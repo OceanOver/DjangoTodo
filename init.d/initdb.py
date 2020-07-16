@@ -1,6 +1,5 @@
 # coding=utf-8
 import pymysql
-import sys
 from pathlib import Path
 import environ
 import os
@@ -32,7 +31,6 @@ def init_db():
         # 关闭游标和数据库连接
         cursor.close()
         conn.close()
-        sys.exit(1)
 
 
 if __name__ == "__main__":
