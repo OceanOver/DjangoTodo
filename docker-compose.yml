@@ -51,6 +51,7 @@ services:
         volumes:
             - ./nginx/conf:/etc/nginx/conf.d
             - /home/data/web:/web
+            - /home/data/DjangoTodo/upload:/upload
 
 networks:
     network:
